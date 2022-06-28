@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
+import { BsPersonFill, BsTrash, BsTelephoneFill } from 'react-icons/bs';
+import { Item, RemoveBtn } from './ContactListItem.styled';
 
 export const ContactListItem = ({ item, delateContact }) => {
   return (
-    <li>
+    <Item>
+      <BsPersonFill />
       <p>name: {item.name}</p>
+      <BsTelephoneFill />
       <p>number: {item.number}</p>
-      <button type="button" onClick={() => delateContact(item.id)}>
-        Delate
-      </button>
-    </li>
+      <RemoveBtn type="button" onClick={() => delateContact(item.id)}>
+        Delate <BsTrash />
+      </RemoveBtn>
+    </Item>
   );
 };
 

@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { PhoneBookForm } from '../PhoneBookForm/PhoneBookForm';
 import { ContactList } from '../ContactsList/ContactsList';
 import { Filter } from '../Filter/Filter';
+import { Box, Title } from './PhoneBook.styled';
 
 export class PhoneBook extends Component {
   state = {
@@ -61,15 +62,15 @@ export class PhoneBook extends Component {
     );
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Box>
+        <Title>Phonebook</Title>
         <PhoneBookForm submitForm={this.submitForm} />
         <Filter onFilter={this.onFilter} filter={this.state.filter} />
         <ContactList
           contactsInfo={filtredContacts}
           delateContact={this.delateContact}
         />
-      </div>
+      </Box>
     );
   }
 }
