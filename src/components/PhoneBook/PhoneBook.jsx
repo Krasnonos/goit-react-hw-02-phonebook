@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { PhoneBookForm } from '../PhoneBookForm/PhoneBookForm';
 import { ContactList } from '../ContactsList/ContactsList';
-// import { Filter } from '../Filter/Filter';
+import { Filter } from '../Filter/Filter';
 
 export class PhoneBook extends Component {
   state = {
@@ -40,16 +40,17 @@ export class PhoneBook extends Component {
   };
 
   render() {
-    // const normalizedFilter = this.state.filter.toLowerCase;
-    // const filtredContacts =
-    //   this.state.contacts.toLowerCase.includes(normalizedFilter);
+    const normalizedFilter = this.state.filter.toLowerCase();
+    const filtredContacts = this.state.contacts.filter(person =>
+      person.name.toLowerCase().includes(normalizedFilter)
+    );
 
     return (
       <div>
         <h1>Phonebook</h1>
         <PhoneBookForm initialValue={this.state} submitForm={this.submitForm} />
-        {/* <Filter onFilter={this.onFilter} filter={this.state.filter} /> */}
-        <ContactList contactsInfo={this.state.contacts} />
+        <Filter onFilter={this.onFilter} filter={this.state.filter} />
+        <ContactList contactsInfo={filtredContacts} />
       </div>
     );
   }
