@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { ContactListItem } from '../ContactsListItem/ContactsListItem';
 
-export const ContactList = ({ contactsInfo, delateContat }) => {
+export const ContactList = ({ contactsInfo, delateContact }) => {
   return (
     <div>
       <p>Contacts</p>
@@ -9,10 +10,14 @@ export const ContactList = ({ contactsInfo, delateContat }) => {
           <ContactListItem
             item={item}
             key={item.id}
-            delateContat={delateContat}
+            delateContact={delateContact}
           />
         ))}
       </ul>
     </div>
   );
+};
+
+ContactList.propTypes = {
+  contactsInfo: PropTypes.arrayOf(PropTypes.shape),
 };

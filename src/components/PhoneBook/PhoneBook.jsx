@@ -46,7 +46,7 @@ export class PhoneBook extends Component {
     });
   };
 
-  delateContat = id => {
+  delateContact = id => {
     this.setState(prevState => {
       return {
         contacts: prevState.contacts.filter(person => person.id !== id),
@@ -67,7 +67,7 @@ export class PhoneBook extends Component {
         <Filter onFilter={this.onFilter} filter={this.state.filter} />
         <ContactList
           contactsInfo={filtredContacts}
-          delateContat={this.delateContat}
+          delateContact={this.delateContact}
         />
       </div>
     );

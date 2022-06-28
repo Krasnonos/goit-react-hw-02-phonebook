@@ -1,4 +1,5 @@
 import { Formik, Form, Field } from 'formik';
+import PropTypes from 'prop-types';
 
 export const PhoneBookForm = ({ submitForm }) => {
   return (
@@ -6,7 +7,7 @@ export const PhoneBookForm = ({ submitForm }) => {
       <Form>
         <label>
           Name
-          <Field type="text" name="name" />
+          <Field type="text" name="name" required />
         </label>
         <label>
           Number
@@ -22,4 +23,8 @@ export const PhoneBookForm = ({ submitForm }) => {
       </Form>
     </Formik>
   );
+};
+
+PhoneBookForm.propTypes = {
+  submitForm: PropTypes.func,
 };
