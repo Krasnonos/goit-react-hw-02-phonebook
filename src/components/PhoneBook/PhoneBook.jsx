@@ -12,12 +12,19 @@ export class PhoneBook extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
-    number: '',
     filter: '',
   };
 
   submitForm = (values, { resetForm }) => {
+    const isInclude = this.state.contacts.find(
+      person => person.name.toLowerCase() === values.name.toLowerCase()
+    );
+
+    if (isInclude) {
+      alert(` ${values.name} is already in contacts.`);
+      return;
+    }
+
     const profile = {
       id: nanoid(),
       name: values.name,
@@ -39,6 +46,14 @@ export class PhoneBook extends Component {
     });
   };
 
+  delateContat = id => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(person => person.id !== id),
+      };
+    });
+  };
+
   render() {
     const normalizedFilter = this.state.filter.toLowerCase();
     const filtredContacts = this.state.contacts.filter(person =>
@@ -48,9 +63,12 @@ export class PhoneBook extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <PhoneBookForm initialValue={this.state} submitForm={this.submitForm} />
+        <PhoneBookForm submitForm={this.submitForm} />
         <Filter onFilter={this.onFilter} filter={this.state.filter} />
-        <ContactList contactsInfo={filtredContacts} />
+        <ContactList
+          contactsInfo={filtredContacts}
+          delateContat={this.delateContat}
+        />
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import { Formik, Form, Field } from 'formik';
 
-export const PhoneBookForm = ({ initialValue, submitForm }) => {
+export const PhoneBookForm = ({ submitForm }) => {
   return (
-    <Formik initialValues={initialValue} onSubmit={submitForm}>
+    <Formik initialValues={{ name: '', number: '' }} onSubmit={submitForm}>
       <Form>
         <label>
           Name
